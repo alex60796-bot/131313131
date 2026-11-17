@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>경동대학교 디자인학과 3학년 인물지도</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5f4ef;
+      --surface: #ffffff;
+      --surface-2: #eceae2;
+      --text: #15171c;
+      --text-muted: #5d626e;
+      --border: #dcd8cd;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.12);
+      --coral: #ff5a36;
+      --coral-soft: rgba(255, 90, 54, 0.13);
+      --emerald: #059669;
+      --amber: #d97706;
+      --pink: #db2777;
+      --cyan: #0891b2;
+      --shadow: 0 10px 30px rgba(21, 23, 28, 0.06);
+      --map-land: #e6e3d8;
+      --map-seoul: #dcd8ca;
+      --map-water: #dbeafe;
+      --map-grid: rgba(21, 23, 28, 0.06);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0c0e14;
+      --surface: #141822;
+      --surface-2: #1c2230;
+      --text: #f3f4f8;
+      --text-muted: #9aa2b4;
+      --border: #262d3d;
+      --accent: #818cf8;
+      --accent-soft: rgba(129, 140, 248, 0.16);
+      --coral: #ff6b4a;
+      --coral-soft: rgba(255, 107, 74, 0.18);
+      --emerald: #34d399;
+      --amber: #fbbf24;
+      --pink: #f472b6;
+      --cyan: #22d3ee;
+      --shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
+      --map-land: #1c2230;
+      --map-seoul: #262f42;
+      --map-water: #152238;
+      --map-grid: rgba(255, 255, 255, 0.05);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      transition: background 0.25s, color 0.25s;
+      min-height: 100vh;
+    }
+
+    .mono { font-family: 'Space Grotesk', monospace; }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-badge {
+      background: var(--text);
+      color: var(--bg);
+      font-weight: 800;
+      font-size: 13px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      letter-spacing: 0.04em;
+    }
+    .brand h1 {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .brand p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .tab-nav {
+      display: flex;
+      background: var(--surface-2);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .tab-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .tab-btn.active {
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .theme-btn {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .theme-btn:hover { background: var(--surface-2); }
+
+    /* Main Container */
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 24px 48px;
+    }
+
+    /* KPI Strip */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      box-shadow: var(--shadow);
+    }
+    .kpi-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 4px;
+    }
+    .kpi-value {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .kpi-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Panels */
+    .view-section { display: none; }
+    .view-section.active { display: block; }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .filter-pill {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 11px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .filter-pill:hover { border-color: var(--accent); color: var(--text); }
+    .filter-pill.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .filter-pill.coral.active {
+      background: var(--coral);
+      border-color: var(--coral);
+    }
+
+    /* Network & Map SVG stage */
+    .stage-wrap {
+      position: relative;
+      width: 100%;
+      height: 620px;
+      background: var(--bg);
+      overflow: hidden;
+    }
+    svg.viz-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      user-select: none;
+    }
+
+    .stage-legend {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      box-shadow: var(--shadow);
+      max-width: calc(100% - 28px);
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .stage-tip {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    /* Side Inspector */
+    .inspector {
+      position: sticky;
+      top: 84px;
+    }
+    .inspector-body {
+      padding: 18px;
+    }
+    .inspector-empty {
+      text-align: center;
+      padding: 40px 16px;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .avatar-circle {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .profile-name {
+      font-size: 20px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .gender-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--surface-2);
+      color: var(--text);
+    }
+    .gender-badge.special {
+      background: var(--coral-soft);
+      color: var(--coral);
+    }
+
+    .info-block {
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .info-block:last-child { border-bottom: none; margin-bottom: 0; }
+    .info-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+    }
+    .info-val {
+      font-size: 14px;
+      font-weight: 500;
+      word-break: keep-all;
+    }
+    .quote-box {
+      background: var(--coral-soft);
+      border-left: 3px solid var(--coral);
+      padding: 8px 12px;
+      border-radius: 0 8px 8px 0;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 8px;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 9px;
+      border-radius: 8px;
+      background: var(--surface-2);
+      color: var(--text);
+    }
+    .link-btns {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .ext-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.15s;
+    }
+    .ext-link:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+    .ext-link.disabled {
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .conn-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text);
+      font-family: inherit;
+    }
+    .conn-chip:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Analytics & Directory Tab */
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+    .bar-label {
+      width: 112px;
+      flex-shrink: 0;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .bar-track {
+      flex: 1;
+      height: 10px;
+      background: var(--surface-2);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.5s ease;
+    }
+    .bar-count {
+      width: 34px;
+      text-align: right;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .directory-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .search-input {
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 13px;
+      width: 280px;
+      max-width: 100%;
+      font-family: inherit;
+    }
+    .roster-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 14px;
+    }
+    .student-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .student-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    .student-card.selected {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px var(--accent-soft);
+    }
+
+    /* Highlight Pulse */
+    @keyframes pulseRing {
+      0% { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(1.8); opacity: 0; }
+    }
+    .pulse-circle {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: pulseRing 2s infinite ease-out;
+    }
+
+    footer {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px 36px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+    @media (max-width: 1080px) {
+      .workspace { grid-template-columns: 1fr; }
+      .inspector { position: static; }
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .analytics-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .stage-wrap { height: 480px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-badge mono">KDU DESIGN 3</div>
+        <div>
+          <h1>경동대학교 디자인학과 3학년 인물지도</h1>
+          <p>15인의 거점·취향·관계망 데이터 시각화</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <nav class="tab-nav" role="tablist">
+          <button class="tab-btn active" data-tab="network">🌐 관계·취향 인물망</button>
+          <button class="tab-btn" data-tab="map">🗺️ 거점 인물 지도</button>
+          <button class="tab-btn" data-tab="analytics">📊 통계 & 전체 명부</button>
+        </nav>
+        <button class="theme-btn" id="themeToggle" title="테마 전환">🌙 다크모드</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- KPI Summary -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">총 참여 인원</div>
+        <div class="kpi-value">15명</div>
+        <div class="kpi-sub">제출 페이지 14개 · GitHub 15개</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">최대 밀집 거점</div>
+        <div class="kpi-value">의정부시 4명</div>
+        <div class="kpi-sub">민락·의정부·금오·신곡2동</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">최다 취미 클러스터</div>
+        <div class="kpi-value">음악·기타 8명</div>
+        <div class="kpi-sub">일렉·통기타·네줄·우쿨렐레 등</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">직접 지목 화살표</div>
+        <div class="kpi-value" style="color: var(--coral);">2쌍 발견</div>
+        <div class="kpi-sub">박준영→김보라 · 민제희→정유림</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">최장 거리 통학/거점</div>
+        <div class="kpi-value">거제시 장평동</div>
+        <div class="kpi-sub">박정빈 (양주 캠퍼스 기준 ~330km)</div>
+      </div>
+    </section>
+
+    <!-- TAB 1 & 2 Shared Workspace Layout -->
+    <div class="workspace" id="mainWorkspace">
+      <!-- Left Interactive Canvas -->
+      <div>
+        <!-- Network Section -->
+        <section class="view-section active" id="tab-network">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🌐 인물 관계·공통점 별자리 그래프</div>
+              <div class="pill-group" id="networkFilters">
+                <button class="filter-pill active" data-edge="all">전체 연결</button>
+                <button class="filter-pill coral" data-edge="mention">💘 직접 지목</button>
+                <button class="filter-pill" data-edge="hobby">🎸 취미 공유</button>
+                <button class="filter-pill" data-edge="region">📍 같은 생활권</button>
+                <button class="filter-pill" data-edge="treasure">💎 가치관 공유</button>
+              </div>
+            </div>
+            <div class="stage-wrap">
+              <svg id="networkSvg" class="viz-svg"></svg>
+              <div class="stage-tip">노드를 드래그하거나 클릭해 동기 정보를 확인하세요</div>
+              <div class="stage-legend">
+                <div class="legend-item"><span class="legend-dot" style="background: var(--coral);"></span>직접 지목 (가장 아끼는 동기)</div>
+                <div class="legend-item"><span class="legend-dot" style="background: var(--accent);"></span>취미/팬덤 공유</div>
+                <div class="legend-item"><span class="legend-dot" style="background: var(--emerald);"></span>같은 지역/생활권</div>
+                <div class="legend-item"><span class="legend-dot" style="background: var(--amber);"></span>가치관(나/가족) 공유</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="view-section" id="tab-map">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🗺️ 거주지 거점 지도 (동 단위)</div>
+              <div class="pill-group" id="mapModeFilters">
+                <button class="filter-pill active" data-mapmode="metro">🔍 수도권·경기북부 상세</button>
+                <button class="filter-pill" data-mapmode="korea">🇰🇷 전국 전체뷰 (거제시 포함)</button>
+              </div>
+            </div>
+            <div class="stage-wrap">
+              <svg id="mapSvg" class="viz-svg"></svg>
+              <div class="stage-tip">점 또는 라벨을 클릭하면 상세 프로필이 열립니다</div>
+              <div class="stage-legend">
+                <div class="legend-item"><span class="legend-dot" style="background: var(--coral);"></span>경동대 메트로폴 캠퍼스 (양주)</div>
+                <div class="legend-item"><span class="legend-dot" style="background: var(--accent);"></span>의정부권 (4명)</div>
+                <div class="legend-item"><span class="legend-dot" style="background: var(--emerald);"></span>서울권 (4명)</div>
+                <div class="legend-item"><span class="legend-dot" style="background: var(--amber);"></span>경기 동·북부 (5명)</div>
+                <div class="legend-item"><span class="legend-dot" style="background: var(--pink);"></span>강원 · 경남 (2명)</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right Persistent Inspector -->
+      <aside class="card inspector" id="inspectorCard">
+        <div class="card-header">
+          <div class="card-title">🪪 인물 상세 카드</div>
+          <span class="mono" style="font-size: 11px; color: var(--text-muted);" id="inspectorIndex">SELECT NODE</span>
+        </div>
+        <div class="inspector-body" id="inspectorBody">
+          <div class="inspector-empty">
+            좌측 지도나 인물망에서 동기를 클릭하면<br />취미, 거점, 포트폴리오 링크와 연결된 친구들이 표시됩니다.
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- TAB 3: Analytics & Directory -->
+    <section class="view-section" id="tab-analytics">
+      <div class="analytics-grid">
+        <div class="card">
+          <div class="card-header"><div class="card-title">📍 거주 권역 분포</div></div>
+          <div class="inspector-body" id="regionChart"></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">🎨 취미·관심사 클러스터</div></div>
+          <div class="inspector-body" id="hobbyChart"></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">💎 가장 아끼는 것 & 캐릭터 밈</div></div>
+          <div class="inspector-body" id="treasureChart"></div>
+        </div>
+      </div>
+
+      <div class="directory-controls">
+        <input type="text" class="search-input" id="searchInput" placeholder="이름, 지역, 취미, 아끼는 것 검색..." />
+        <div class="pill-group" id="rosterFilters">
+          <button class="filter-pill active" data-filter="all">전체 (15)</button>
+          <button class="filter-pill" data-filter="의정부">의정부 (4)</button>
+          <button class="filter-pill" data-filter="서울">서울 (4)</button>
+          <button class="filter-pill" data-filter="경기기타">경기 동·북부 (5)</button>
+          <button class="filter-pill" data-filter="음악">🎸 음악·기타</button>
+          <button class="filter-pill" data-filter="개성">✨ 유쾌한 성별/어록</button>
+        </div>
+      </div>
+
+      <div class="roster-grid" id="rosterGrid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div>경동대학교 디자인학과 3학년 인물지도 데이터 시각화 · 총 15명 데이터 기반</div>
+    <div>시트 하단 참고 링크: <a href="https://gypog5122-cell.github.io/20260911-2/" target="_blank" rel="noopener">gypog5122-cell.github.io/20260911-2/ ↗</a></div>
+  </footer>
+
+  <script>
+    // ==========================================
+    // 1. DATA DEFINITION (Cleaned from CSV)
+    // ==========================================
+    const CAMPUS = { name: "경동대 메트로폴 캠퍼스", lat: 37.826, lng: 127.074 };
+
+    const STUDENTS = [
+      {
+        id: "park_js",
+        name: "박종석",
+        github: "https://github.com/John02-design",
+        pages: "https://john02-design.github.io/1234/",
+        instaLabel: "I_am_jongseok",
+        instaUrl: "https://www.instagram.com/I_am_jongseok/",
+        hobbies: ["일렉기타", "영화감상"],
+        hobbyTags: ["음악/악기", "영화/영상"],
+        address: "경기도 의정부시 민락동",
+        regionGroup: "의정부",
+        lat: 37.745, lng: 127.095,
+        treasure: "나",
+        treasureType: "자기애",
+        gender: "미입력",
+        specialGender: false,
+        color: "#4f46e5",
+        mentions: []
+      },
+      {
+        id: "park_jy",
+        name: "박준영",
+        github: "https://github.com/alex60796-bot",
+        pages: "https://alex60796-bot.github.io/dkssudgktpdy/",
+        instaLabel: "jxn.y0xn9",
+        instaUrl: "https://www.instagram.com/jxn.y0xn9/",
+        hobbies: ["피파"],
+        hobbyTags: ["게임/애니"],
+        address: "경기도 의정부시 의정부동",
+        regionGroup: "의정부",
+        lat: 37.738, lng: 127.046,
+        treasure: "김보라",
+        treasureType: "동기지목",
+        gender: "공룡",
+        specialGender: true,
+        color: "#ff5a36",
+        mentions: ["kim_br"]
+      },
+      {
+        id: "kang_ms",
+        name: "강민서",
+        github: "https://github.com/rlverms",
+        pages: "https://rlverms.github.io/rlverms/",
+        instaLabel: "rlverms",
+        instaUrl: "https://www.instagram.com/rlverms/",
+        hobbies: ["쿠리만쥬 인형 구매", "영화 시청", "음악 감상"],
+        hobbyTags: ["팬덤/수집", "영화/영상", "음악/감상"],
+        address: "서울특별시 노원구 상계동",
+        regionGroup: "서울",
+        lat: 37.660, lng: 127.065,
+        treasure: "엄마",
+        treasureType: "가족애",
+        gender: "여자",
+        specialGender: false,
+        color: "#059669",
+        mentions: []
+      },
+      {
+        id: "park_jb",
+        name: "박정빈",
+        github: "https://github.com/ImSAKUYAmyfriendisRYO",
+        pages: "https://imsakuyamyfriendisryo.github.io/-/",
+        instaLabel: "@upfstpu.2",
+        instaUrl: "https://www.instagram.com/upfstpu.2/",
+        hobbies: ["노래듣기"],
+        hobbyTags: ["음악/감상", "팬덤/수집"], // GitHub ID: ImSAKUYAmyfriendisRYO (NCT WISH)
+        address: "경상남도 거제시 장평동",
+        regionGroup: "경남",
+        lat: 34.892, lng: 128.613,
+        treasure: "나 ^.....^",
+        treasureType: "자기애",
+        gender: "여자",
+        specialGender: false,
+        color: "#db2777",
+        note: "GitHub ID(ImSAKUYAmyfriendisRYO)로 NCT WISH 팬덤 공통점 포착",
+        mentions: []
+      },
+      {
+        id: "kim_nr",
+        name: "김나림",
+        github: "https://github.com/nalimgim947",
+        pages: "",
+        instaLabel: "@thisisimrimthis",
+        instaUrl: "https://www.instagram.com/thisisimrimthis/",
+        hobbies: ["그림", "음악", "운동", "애니"],
+        hobbyTags: ["창작/독서", "음악/감상", "운동/힐링", "게임/애니"],
+        address: "경기도 동두천시",
+        regionGroup: "경기기타",
+        lat: 37.903, lng: 127.060,
+        treasure: "나라고 나",
+        treasureType: "자기애",
+        gender: "덩엉이",
+        specialGender: true,
+        color: "#d97706",
+        mentions: []
+      },
+      {
+        id: "kim_br",
+        name: "김보라",
+        github: "https://github.com/KIMBORA050411",
+        pages: "https://kimbora050411.github.io/050411/",
+        instaLabel: "@b0.ra.4",
+        instaUrl: "https://www.instagram.com/b0.ra.4/",
+        hobbies: ["공포 보기"],
+        hobbyTags: ["영화/영상"],
+        address: "경기도 의정부시 금오동",
+        regionGroup: "의정부",
+        lat: 37.752, lng: 127.074,
+        treasure: "김복돌",
+        treasureType: "반려/건강",
+        gender: "여자",
+        specialGender: false,
+        color: "#4f46e5",
+        mentions: []
+      },
+      {
+        id: "kim_sg",
+        name: "김승기",
+        github: "https://github.com/Seung7l",
+        pages: "https://seung7l.github.io/DoSiMoonWhaSulGye/",
+        instaLabel: "@_seung7l",
+        instaUrl: "https://www.instagram.com/_seung7l/",
+        hobbies: ["네줄기타"],
+        hobbyTags: ["음악/악기"],
+        address: "경기도 구리시 인창동",
+        regionGroup: "경기기타",
+        lat: 37.603, lng: 127.143,
+        treasure: "바로바로 나!",
+        treasureType: "자기애",
+        gender: "남자",
+        specialGender: false,
+        color: "#d97706",
+        mentions: []
+      },
+      {
+        id: "moon_mh",
+        name: "문민희",
+        github: "https://github.com/massiag41-art",
+        pages: "https://massiag41-art.github.io/1233/",
+        instaLabel: "@mini3061",
+        instaUrl: "https://www.instagram.com/mini3061/",
+        hobbies: ["게임"],
+        hobbyTags: ["게임/애니"],
+        address: "경기도 남양주시",
+        regionGroup: "경기기타",
+        lat: 37.636, lng: 127.216,
+        treasure: "가족, 망고, 여름",
+        treasureType: "가족애",
+        gender: "여자",
+        specialGender: false,
+        color: "#d97706",
+        mentions: []
+      },
+      {
+        id: "min_jh",
+        name: "민제희",
+        github: "https://github.com/alfmekfn5",
+        pages: "https://alfmekfn5.github.io/555/",
+        instaLabel: "@mirdar.u_",
+        instaUrl: "https://www.instagram.com/mirdar.u_/",
+        hobbies: ["게임", "운동", "기깔나게 자기"],
+        hobbyTags: ["게임/애니", "운동/힐링"],
+        address: "강원도 춘천시",
+        regionGroup: "강원",
+        lat: 37.881, lng: 127.730,
+        treasure: "가족들, 이연우 <<<<<<<<<<<<<< 정유림",
+        treasureType: "동기지목",
+        gender: "경동대제국 1황녀",
+        specialGender: true,
+        note: "어머니 저는 2층에서 뛰어내려서 등교하겠습니다 -> 상여자",
+        color: "#db2777",
+        mentions: ["jung_yr"]
+      },
+      {
+        id: "yoon_sa",
+        name: "윤수아",
+        github: "https://github.com/tndk0512-ux",
+        pages: "https://tndk0512-ux.github.io/index/",
+        instaLabel: "tnd_0_5",
+        instaUrl: "https://www.instagram.com/tnd_0_5/",
+        hobbies: ["기타", "애니", "음악듣기"],
+        hobbyTags: ["음악/악기", "게임/애니", "음악/감상"],
+        address: "서울특별시 송파구 마천동",
+        regionGroup: "서울",
+        lat: 37.495, lng: 127.152,
+        treasure: "동생",
+        treasureType: "가족애",
+        gender: "여자",
+        specialGender: false,
+        color: "#059669",
+        mentions: []
+      },
+      {
+        id: "lee_jm",
+        name: "이지민",
+        github: "https://github.com/leejimin0",
+        pages: "https://leejimin0.github.io/ezym/",
+        instaLabel: "@tonmozza",
+        instaUrl: "https://www.instagram.com/tonmozza/",
+        hobbies: ["독서"],
+        hobbyTags: ["창작/독서"],
+        address: "경기도 하남시 망월동",
+        regionGroup: "경기기타",
+        lat: 37.567, lng: 127.190,
+        treasure: "가족",
+        treasureType: "가족애",
+        gender: "여자",
+        specialGender: false,
+        color: "#d97706",
+        mentions: []
+      },
+      {
+        id: "jung_yr",
+        name: "정유림",
+        github: "https://github.com/yourrime0502-afk",
+        pages: "https://yourrime0502-afk.github.io/kdu1/",
+        instaLabel: "@nollimmm",
+        instaUrl: "https://www.instagram.com/nollimmm?mdxt=MWNnNHBwZm5kNWI4NQ==",
+        hobbies: ["콘서트 관람"],
+        hobbyTags: ["음악/감상", "팬덤/수집"],
+        address: "서울특별시 동대문구 답십리2동",
+        regionGroup: "서울",
+        lat: 37.571, lng: 127.061,
+        treasure: "우리 엄마, 이성열 미모",
+        treasureType: "가족애",
+        gender: "여자",
+        specialGender: false,
+        color: "#059669",
+        mentions: []
+      },
+      {
+        id: "choi_yy",
+        name: "최윤영",
+        github: "https://github.com/usagi030dd",
+        pages: "https://usagi030dd.github.io/samples/",
+        instaLabel: "@usagi030dd",
+        instaUrl: "https://www.instagram.com/usagi030dd/",
+        hobbies: ["음악 감상 및 연주(통기타&일렉)"],
+        hobbyTags: ["음악/악기", "음악/감상"],
+        address: "서울특별시 도봉구 쌍문동",
+        regionGroup: "서울",
+        lat: 37.651, lng: 127.034,
+        treasure: "엄마",
+        treasureType: "가족애",
+        gender: "여자",
+        specialGender: false,
+        color: "#059669",
+        mentions: []
+      },
+      {
+        id: "choi_yj",
+        name: "최윤지",
+        github: "https://github.com/choiyg1105-cloud",
+        pages: "https://choiyg1105-cloud.github.io/save/",
+        instaLabel: "yum._.crochet",
+        instaUrl: "https://www.instagram.com/yum._.crochet/",
+        hobbies: ["우쿨렐레", "뜨개질"],
+        hobbyTags: ["음악/악기", "창작/독서"],
+        address: "경기도 포천시",
+        regionGroup: "경기기타",
+        lat: 37.895, lng: 127.200,
+        treasure: "건강",
+        treasureType: "반려/건강",
+        gender: "여자",
+        specialGender: false,
+        color: "#d97706",
+        mentions: []
+      },
+      {
+        id: "shin_dh",
+        name: "신단하",
+        github: "https://github.com/danhaaaa",
+        pages: "https://danhaaaa.github.io/sakuya/",
+        instaLabel: "@danha_naa",
+        instaUrl: "https://www.instagram.com/danha_naa/",
+        hobbies: ["위시 사랑하기"],
+        hobbyTags: ["팬덤/수집"],
+        address: "경기도 의정부시 신곡2동",
+        regionGroup: "의정부",
+        lat: 37.739, lng: 127.068,
+        treasure: "동생",
+        treasureType: "가족애",
+        gender: "여자",
+        specialGender: false,
+        color: "#4f46e5",
+        note: "Pages 주소(/sakuya/) & 취미(위시 사랑하기)로 박정빈과 같은 NCT WISH 사쿠야 팬 연결",
+        mentions: []
+      }
+    ];
+
+    const byId = Object.fromEntries(STUDENTS.map(s => [s.id, s]));
+
+    // ==========================================
+    // 2. BUILD EDGES (Relationships & Clusters)
+    // ==========================================
+    const EDGES = [];
+    function addEdge(source, target, type, label) {
+      EDGES.push({ source, target, type, label });
+    }
+
+    // 1) Direct Mentions
+    STUDENTS.forEach(s => {
+      s.mentions.forEach(tId => {
+        addEdge(s.id, tId, "mention", `${s.name} → ${byId[tId].name} 직접 지목`);
+      });
+    });
+
+    // 2) Shared Hobby Categories & Region & Treasure
+    for (let i = 0; i < STUDENTS.length; i++) {
+      for (let j = i + 1; j < STUDENTS.length; j++) {
+        const a = STUDENTS[i];
+        const b = STUDENTS[j];
+
+        // Shared hobby tags
+        const sharedHobbies = a.hobbyTags.filter(t => b.hobbyTags.includes(t));
+        if (sharedHobbies.length > 0) {
+          addEdge(a.id, b.id, "hobby", `공통 취미: ${sharedHobbies.join(", ")}`);
+        }
+
+        // Same region cluster (의정부, 서울)
+        if (a.regionGroup === b.regionGroup && (a.regionGroup === "의정부" || a.regionGroup === "서울")) {
+          addEdge(a.id, b.id, "region", `같은 생활권: ${a.regionGroup}`);
+        }
+
+        // Shared treasure value (자기애 / 가족애)
+        if (a.treasureType === b.treasureType && (a.treasureType === "자기애" || a.treasureType === "가족애")) {
+          addEdge(a.id, b.id, "treasure", `가치관: ${a.treasureType}`);
+        }
+      }
+    }
+
+    // ==========================================
+    // 3. STATE & THEME
+    // ==========================================
+    let selectedId = "min_jh"; // Default featured student
+    let currentEdgeFilter = "all";
+    let currentMapMode = "metro";
+
+    const themeBtn = document.getElementById("themeToggle");
+    themeBtn.addEventListener("click", () => {
+      const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+      document.documentElement.setAttribute("data-theme", isDark ? "light" : "dark");
+      themeBtn.textContent = isDark ? "🌙 다크모드" : "☀️ 라이트모드";
+      renderMap();
+    });
+
+    // Tab switching
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const tab = btn.dataset.tab;
+
+        document.querySelectorAll(".view-section").forEach(sec => sec.classList.remove("active"));
+        document.getElementById(`tab-${tab}`).classList.add("active");
+
+        const workspace = document.getElementById("mainWorkspace");
+        if (tab === "analytics") {
+          workspace.style.display = "none";
+          renderAnalytics();
+          renderRoster();
+        } else {
+          workspace.style.display = "grid";
+          if (tab === "map") renderMap();
+          if (tab === "network") updateNetworkSize();
+        }
+      });
+    });
+
+    // ==========================================
+    // 4. INSPECTOR RENDERER
+    // ==========================================
+    function selectStudent(id) {
+      selectedId = id;
+      renderInspector();
+      highlightNetworkSelection();
+      renderMap();
+      renderRoster();
+    }
+
+    function renderInspector() {
+      const s = byId[selectedId];
+      const body = document.getElementById("inspectorBody");
+      const idxBadge = document.getElementById("inspectorIndex");
+      if (!s) return;
+
+      const idx = STUDENTS.findIndex(x => x.id === s.id) + 1;
+      idxBadge.textContent = `#${String(idx).padStart(2, "0")} / 15`;
+
+      // Find connected students
+      const connMap = new Map();
+      EDGES.forEach(e => {
+        if (e.source === s.id) {
+          if (!connMap.has(e.target)) connMap.set(e.target, []);
+          connMap.get(e.target).push(e.label);
+        } else if (e.target === s.id) {
+          if (!connMap.has(e.source)) connMap.set(e.source, []);
+          connMap.get(e.source).push(e.label);
+        }
+      });
+
+      const distKm = haversineKm(CAMPUS.lat, CAMPUS.lng, s.lat, s.lng).toFixed(1);
+
+      body.innerHTML = `
+        <div class="profile-top">
+          <div class="avatar-circle" style="background: ${s.color};">${s.name.slice(0, 1)}</div>
+          <div>
+            <div class="profile-name">
+              ${s.name}
+              <span class="gender-badge ${s.specialGender ? "special" : ""}">${s.gender}</span>
+            </div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">
+              ${s.regionGroup} · 캠퍼스 직선거리 약 ${distKm}km
+            </div>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-label">📍 집주소 (동 단위)</div>
+          <div class="info-val">${s.address}</div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-label">🎨 취미 & 관심사</div>
+          <div class="tag-list">
+            ${s.hobbies.map(h => `<span class="tag">${h}</span>`).join("")}
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-label">💎 세상에서 가장 아끼는 것</div>
+          <div class="info-val" style="font-weight: 700;">${escapeHtml(s.treasure)}</div>
+          ${s.note ? `<div class="quote-box">💬 ${escapeHtml(s.note)}</div>` : ""}
+        </div>
+
+        <div class="info-block">
+          <div class="info-label">🔗 포트폴리오 & 소셜 링크</div>
+          <div class="link-btns">
+            <a class="ext-link" href="${s.github}" target="_blank" rel="noopener">
+              <span>GitHub 프로필</span><span>↗</span>
+            </a>
+            <a class="ext-link ${s.pages ? "" : "disabled"}" href="${s.pages || "#"}" target="_blank" rel="noopener">
+              <span>${s.pages ? "제출 페이지 (GitHub Pages)" : "제출 페이지 미등록"}</span><span>${s.pages ? "↗" : "—"}</span>
+            </a>
+            <a class="ext-link" href="${s.instaUrl}" target="_blank" rel="noopener">
+              <span>Instagram (${escapeHtml(s.instaLabel)})</span><span>↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-label">🤝 연결된 동기 (${connMap.size}명)</div>
+          <div class="tag-list">
+            ${Array.from(connMap.entries()).slice(0, 10).map(([otherId, reasons]) => {
+              const other = byId[otherId];
+              const isMention = reasons.some(r => r.includes("직접 지목"));
+              return `<button class="conn-chip" onclick="selectStudent('${otherId}')" title="${escapeHtml(reasons.join(' / '))}">
+                ${isMention ? "💘 " : ""}${other.name}
+              </button>`;
+            }).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    function haversineKm(lat1, lon1, lat2, lon2) {
+      const R = 6371;
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a = Math.sin(dLat / 2) ** 2 +
+        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon / 2) ** 2;
+      return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+
+    // ==========================================
+    // 5. FORCE-DIRECTED NETWORK GRAPH (Pure SVG)
+    // ==========================================
+    const netSvg = document.getElementById("networkSvg");
+    let netWidth = 800, netHeight = 620;
+    const nodes = STUDENTS.map((s, i) => {
+      const angle = (i / STUDENTS.length) * Math.PI * 2;
+      return {
+        ...s,
+        x: 400 + Math.cos(angle) * 200,
+        y: 310 + Math.sin(angle) * 180,
+        vx: 0,
+        vy: 0
+      };
+    });
+    const nodeById = Object.fromEntries(nodes.map(n => [n.id, n]));
+
+    let dragNode = null;
+    let dragMoved = false;
+
+    function updateNetworkSize() {
+      const rect = netSvg.getBoundingClientRect();
+      if (rect.width > 0) {
+        netWidth = rect.width;
+        netHeight = rect.height;
+      }
+    }
+
+    function initNetworkSvg() {
+      updateNetworkSize();
+      netSvg.innerHTML = "";
+
+      const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+      defs.innerHTML = `
+        <marker id="arrowCoral" viewBox="0 0 10 10" refX="26" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--coral)"></path>
+        </marker>
+      `;
+      netSvg.appendChild(defs);
+
+      const edgeLayer = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      edgeLayer.id = "edgeLayer";
+      const nodeLayer = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      nodeLayer.id = "nodeLayer";
+
+      netSvg.appendChild(edgeLayer);
+      netSvg.appendChild(nodeLayer);
+
+      // Render Edges
+      EDGES.forEach((e, idx) => {
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.dataset.idx = idx;
+        line.dataset.type = e.type;
+        line.dataset.source = e.source;
+        line.dataset.target = e.target;
+
+        const colorMap = {
+          mention: "var(--coral)",
+          hobby: "var(--accent)",
+          region: "var(--emerald)",
+          treasure: "var(--amber)"
+        };
+        line.setAttribute("stroke", colorMap[e.type]);
+        line.setAttribute("stroke-width", e.type === "mention" ? "2.8" : "1.3");
+        if (e.type === "mention") {
+          line.setAttribute("stroke-dasharray", "6 4");
+          line.setAttribute("marker-end", "url(#arrowCoral)");
+        }
+        line.setAttribute("stroke-opacity", e.type === "mention" ? "0.95" : "0.28");
+        edgeLayer.appendChild(line);
+      });
+
+      // Render Nodes
+      nodes.forEach(n => {
+        const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        g.style.cursor = "grab";
+        g.dataset.id = n.id;
+
+        const ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        ring.setAttribute("r", "24");
+        ring.setAttribute("fill", "none");
+        ring.setAttribute("stroke", n.color);
+        ring.setAttribute("stroke-width", "2.5");
+        ring.setAttribute("opacity", "0");
+        ring.classList.add("sel-ring");
+
+        const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        circle.setAttribute("r", n.mentions.length > 0 || n.id === "kim_br" || n.id === "jung_yr" ? "20" : "17");
+        circle.setAttribute("fill", n.color);
+        circle.setAttribute("stroke", "var(--surface)");
+        circle.setAttribute("stroke-width", "2.5");
+
+        const initial = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        initial.setAttribute("text-anchor", "middle");
+        initial.setAttribute("dy", "0.35em");
+        initial.setAttribute("fill", "#fff");
+        initial.setAttribute("font-size", "12");
+        initial.setAttribute("font-weight", "800");
+        initial.textContent = n.name.slice(1);
+
+        const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        label.setAttribute("text-anchor", "middle");
+        label.setAttribute("dy", "33");
+        label.setAttribute("fill", "var(--text)");
+        label.setAttribute("font-size", "12");
+        label.setAttribute("font-weight", "700");
+        label.textContent = n.name + (n.specialGender ? " ✨" : "");
+
+        g.appendChild(ring);
+        g.appendChild(circle);
+        g.appendChild(initial);
+        g.appendChild(label);
+
+        g.addEventListener("pointerdown", (ev) => {
+          dragNode = n;
+          dragMoved = false;
+          g.style.cursor = "grabbing";
+          ev.stopPropagation();
+        });
+
+        g.addEventListener("click", () => {
+          if (!dragMoved) selectStudent(n.id);
+        });
+
+        nodeLayer.appendChild(g);
+      });
+
+      window.addEventListener("pointermove", (ev) => {
+        if (!dragNode) return;
+        dragMoved = true;
+        const rect = netSvg.getBoundingClientRect();
+        dragNode.x = Math.max(36, Math.min(rect.width - 36, ev.clientX - rect.left));
+        dragNode.y = Math.max(36, Math.min(rect.height - 46, ev.clientY - rect.top));
+        dragNode.vx = 0;
+        dragNode.vy = 0;
+      });
+
+      window.addEventListener("pointerup", () => {
+        if (dragNode) {
+          dragNode = null;
+        }
+      });
+
+      highlightNetworkSelection();
+      requestAnimationFrame(tickSimulation);
+    }
+
+    function tickSimulation() {
+      const cx = netWidth / 2;
+      const cy = netHeight / 2;
+
+      // Repulsion
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const a = nodes[i], b = nodes[j];
+          let dx = a.x - b.x;
+          let dy = a.y - b.y;
+          let dist2 = dx * dx + dy * dy + 0.1;
+          let dist = Math.sqrt(dist2);
+          const rep = 4200 / dist2;
+          const fx = (dx / dist) * rep;
+          const fy = (dy / dist) * rep;
+          if (a !== dragNode) { a.vx += fx; a.vy += fy; }
+          if (b !== dragNode) { b.vx -= fx; b.vy -= fy; }
+        }
+      }
+
+      // Attraction along active edges
+      EDGES.forEach(e => {
+        if (currentEdgeFilter !== "all" && e.type !== currentEdgeFilter) return;
+        const a = nodeById[e.source];
+        const b = nodeById[e.target];
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        const targetDist = e.type === "mention" ? 115 : 175;
+        const strength = e.type === "mention" ? 0.035 : 0.004;
+        const force = (dist - targetDist) * strength;
+        const fx = (dx / dist) * force;
+        const fy = (dy / dist) * force;
+        if (a !== dragNode) { a.vx += fx; a.vy += fy; }
+        if (b !== dragNode) { b.vx -= fx; b.vy -= fy; }
+      });
+
+      // Center gravity + Damping + Bounds
+      nodes.forEach(n => {
+        if (n === dragNode) return;
+        n.vx += (cx - n.x) * 0.008;
+        n.vy += (cy - n.y) * 0.008;
+        n.vx *= 0.86;
+        n.vy *= 0.86;
+        n.x = Math.max(44, Math.min(netWidth - 44, n.x + n.vx));
+        n.y = Math.max(40, Math.min(netHeight - 54, n.y + n.vy));
+      });
+
+      // Update SVG positions
+      const edgeEls = netSvg.querySelectorAll("#edgeLayer line");
+      edgeEls.forEach(line => {
+        const type = line.dataset.type;
+        const show = currentEdgeFilter === "all" || type === currentEdgeFilter;
+        line.style.display = show ? "block" : "none";
+        if (!show) return;
+
+        const a = nodeById[line.dataset.source];
+        const b = nodeById[line.dataset.target];
+        line.setAttribute("x1", a.x);
+        line.setAttribute("y1", a.y);
+        line.setAttribute("x2", b.x);
+        line.setAttribute("y2", b.y);
+      });
+
+      const nodeEls = netSvg.querySelectorAll("#nodeLayer g");
+      nodeEls.forEach(g => {
+        const n = nodeById[g.dataset.id];
+        g.setAttribute("transform", `translate(${n.x}, ${n.y})`);
+      });
+
+      requestAnimationFrame(tickSimulation);
+    }
+
+    function highlightNetworkSelection() {
+      const nodeEls = netSvg.querySelectorAll("#nodeLayer g");
+      nodeEls.forEach(g => {
+        const ring = g.querySelector(".sel-ring");
+        ring.setAttribute("opacity", g.dataset.id === selectedId ? "1" : "0");
+      });
+      const edgeEls = netSvg.querySelectorAll("#edgeLayer line");
+      edgeEls.forEach(line => {
+        const isAdj = line.dataset.source === selectedId || line.dataset.target === selectedId;
+        const isMention = line.dataset.type === "mention";
+        if (isMention) {
+          line.setAttribute("stroke-opacity", "1");
+        } else {
+          line.setAttribute("stroke-opacity", isAdj ? "0.75" : "0.14");
+          line.setAttribute("stroke-width", isAdj ? "2.1" : "1.1");
+        }
+      });
+    }
+
+    document.querySelectorAll("#networkFilters .filter-pill").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#networkFilters .filter-pill").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentEdgeFilter = btn.dataset.edge;
+      });
+    });
+
+    // ==========================================
+    // 6. GEOGRAPHIC PERSON MAP (SVG Projection)
+    // ==========================================
+    const KOREA_POLY = [
+      [37.75,126.40],[37.45,126.60],[37.15,126.65],[36.75,126.15],[36.35,126.50],
+      [35.98,126.65],[35.65,126.50],[35.25,126.40],[34.80,126.38],[34.30,126.55],
+      [34.35,126.75],[34.50,127.30],[34.75,127.75],[34.80,127.95],[34.83,128.42],
+      [34.88,128.68],[35.10,129.05],[35.50,129.40],[36.05,129.45],[36.45,129.40],
+      [36.98,129.42],[37.44,129.18],[37.78,128.92],[38.20,128.60],[38.55,128.42],
+      [38.28,127.95],[38.28,127.20],[38.15,126.95],[37.90,126.70],[37.75,126.55]
+    ];
+    const JEJU_POLY = [
+      [33.50,126.50],[33.52,126.90],[33.32,126.88],[33.24,126.55],[33.28,126.20],[33.42,126.25]
+    ];
+    const SEOUL_POLY = [
+      [37.69,127.04],[37.67,127.11],[37.61,127.11],[37.55,127.17],[37.47,127.14],
+      [37.45,127.04],[37.45,126.92],[37.49,126.82],[37.56,126.79],[37.63,126.90]
+    ];
+    const HANGANG_LINE = [
+      [37.53,127.28],[37.55,127.12],[37.52,127.02],[37.52,126.95],[37.57,126.83],[37.70,126.65]
+    ];
+
+    // Manual readable offsets for dense Uijeongbu dots in metro zoom
+    const METRO_OFFSETS = {
+      park_js: { dx: 24, dy: -8 },
+      park_jy: { dx: -26, dy: 12 },
+      kim_br:  { dx: 0, dy: -22 },
+      shin_dh: { dx: 24, dy: 18 }
+    };
+
+    function renderMap() {
+      const svg = document.getElementById("mapSvg");
+      const rect = svg.getBoundingClientRect();
+      const W = rect.width || 800;
+      const H = rect.height || 620;
+      svg.innerHTML = "";
+
+      // Projection bounds
+      const bounds = currentMapMode === "metro"
+        ? { minLat: 37.43, maxLat: 37.96, minLng: 126.78, maxLng: 127.84 }
+        : { minLat: 33.0, maxLat: 38.8, minLng: 125.6, maxLng: 130.0 };
+
+      // Keep aspect ratio nice (Korea ~ 1.25 lat/lng stretch at 37N)
+      const cosLat = Math.cos(37 * Math.PI / 180);
+      const dataW = (bounds.maxLng - bounds.minLng) * cosLat;
+      const dataH = bounds.maxLat - bounds.minLat;
+      const pad = 34;
+      const scale = Math.min((W - pad * 2) / dataW, (H - pad * 2) / dataH);
+      const offsetX = (W - dataW * scale) / 2;
+      const offsetY = (H - dataH * scale) / 2;
+
+      function proj(lat, lng) {
+        const x = offsetX + (lng - bounds.minLng) * cosLat * scale;
+        const y = offsetY + (bounds.maxLat - lat) * scale;
+        return [x, y];
+      }
+
+      function polyToPath(pts, close = true) {
+        return pts.map((p, i) => {
+          const [x, y] = proj(p[0], p[1]);
+          return `${i === 0 ? "M" : "L"}${x.toFixed(1)},${y.toFixed(1)}`;
+        }).join(" ") + (close ? " Z" : "");
+      }
+
+      // Grid lines
+      const gridG = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      for (let gx = 0; gx < W; gx += 60) {
+        const l = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        l.setAttribute("x1", gx); l.setAttribute("y1", 0); l.setAttribute("x2", gx); l.setAttribute("y2", H);
+        l.setAttribute("stroke", "var(--map-grid)");
+        gridG.appendChild(l);
+      }
+      for (let gy = 0; gy < H; gy += 60) {
+        const l = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        l.setAttribute("x1", 0); l.setAttribute("y1", gy); l.setAttribute("x2", W); l.setAttribute("y2", gy);
+        l.setAttribute("stroke", "var(--map-grid)");
+        gridG.appendChild(l);
+      }
+      svg.appendChild(gridG);
+
+      // Korea Landmass
+      const land = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      land.setAttribute("d", polyToPath(KOREA_POLY));
+      land.setAttribute("fill", "var(--map-land)");
+      land.setAttribute("stroke", "var(--border)");
+      land.setAttribute("stroke-width", "1.5");
+      svg.appendChild(land);
+
+      if (currentMapMode === "korea") {
+        const jeju = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        jeju.setAttribute("d", polyToPath(JEJU_POLY));
+        jeju.setAttribute("fill", "var(--map-land)");
+        jeju.setAttribute("stroke", "var(--border)");
+        svg.appendChild(jeju);
+      }
+
+      // Seoul Boundary
+      const seoul = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      seoul.setAttribute("d", polyToPath(SEOUL_POLY));
+      seoul.setAttribute("fill", "var(--map-seoul)");
+      seoul.setAttribute("stroke", "var(--border)");
+      seoul.setAttribute("stroke-dasharray", "4 3");
+      svg.appendChild(seoul);
+
+      // Hangang River
+      const river = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      river.setAttribute("d", polyToPath(HANGANG_LINE, false));
+      river.setAttribute("fill", "none");
+      river.setAttribute("stroke", "var(--cyan)");
+      river.setAttribute("stroke-opacity", "0.35");
+      river.setAttribute("stroke-width", currentMapMode === "metro" ? "6" : "2.5");
+      river.setAttribute("stroke-linecap", "round");
+      svg.appendChild(river);
+
+      // Seoul Label
+      const [sx, sy] = proj(37.54, 126.98);
+      const sLbl = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      sLbl.setAttribute("x", sx); sLbl.setAttribute("y", sy);
+      sLbl.setAttribute("text-anchor", "middle");
+      sLbl.setAttribute("fill", "var(--text-muted)");
+      sLbl.setAttribute("font-size", currentMapMode === "metro" ? "13" : "10");
+      sLbl.setAttribute("font-weight", "700");
+      sLbl.setAttribute("opacity", "0.55");
+      sLbl.textContent = "SEOUL";
+      svg.appendChild(sLbl);
+
+      // Campus Anchor & Distance Rings
+      const [cx, cy] = proj(CAMPUS.lat, CAMPUS.lng);
+      if (currentMapMode === "metro") {
+        // 10km, 20km, 30km radius circles
+        [10, 20, 30].forEach(km => {
+          const degPerKm = 1 / 111;
+          const rPx = km * degPerKm * scale;
+          const ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+          ring.setAttribute("cx", cx); ring.setAttribute("cy", cy);
+          ring.setAttribute("r", rPx);
+          ring.setAttribute("fill", "none");
+          ring.setAttribute("stroke", "var(--coral)");
+          ring.setAttribute("stroke-opacity", "0.22");
+          ring.setAttribute("stroke-dasharray", "4 4");
+          svg.appendChild(ring);
+
+          const rTxt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          rTxt.setAttribute("x", cx + rPx - 4); rTxt.setAttribute("y", cy - 4);
+          rTxt.setAttribute("fill", "var(--coral)");
+          rTxt.setAttribute("font-size", "10");
+          rTxt.setAttribute("opacity", "0.7");
+          rTxt.textContent = `${km}km`;
+          svg.appendChild(rTxt);
+        });
+      }
+
+      // Lines from Campus to Students
+      STUDENTS.forEach(s => {
+        if (currentMapMode === "metro" && s.regionGroup === "경남") return;
+        const [px, py] = proj(s.lat, s.lng);
+        const off = currentMapMode === "metro" && METRO_OFFSETS[s.id] ? METRO_OFFSETS[s.id] : { dx: 0, dy: 0 };
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("x1", cx); line.setAttribute("y1", cy);
+        line.setAttribute("x2", px + off.dx); line.setAttribute("y2", py + off.dy);
+        line.setAttribute("stroke", s.id === selectedId ? "var(--coral)" : "var(--text-muted)");
+        line.setAttribute("stroke-opacity", s.id === selectedId ? "0.75" : "0.18");
+        line.setAttribute("stroke-width", s.id === selectedId ? "2" : "1");
+        if (s.regionGroup === "경남") line.setAttribute("stroke-dasharray", "5 4");
+        svg.appendChild(line);
+      });
+
+      // Campus Marker
+      const cg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      const cDot = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      cDot.setAttribute("x", cx - 7); cDot.setAttribute("y", cy - 7);
+      cDot.setAttribute("width", "14"); cDot.setAttribute("height", "14");
+      cDot.setAttribute("rx", "4");
+      cDot.setAttribute("fill", "var(--coral)");
+      cDot.setAttribute("stroke", "#fff");
+      cDot.setAttribute("stroke-width", "2");
+      const cText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      cText.setAttribute("x", cx); cText.setAttribute("y", cy - 13);
+      cText.setAttribute("text-anchor", "middle");
+      cText.setAttribute("fill", "var(--coral)");
+      cText.setAttribute("font-size", "11");
+      cText.setAttribute("font-weight", "800");
+      cText.textContent = "🏫 경동대 양주 캠퍼스";
+      cg.appendChild(cDot);
+      cg.appendChild(cText);
+      svg.appendChild(cg);
+
+      // Student Pins
+      const regionColor = {
+        "의정부": "var(--accent)",
+        "서울": "var(--emerald)",
+        "경기기타": "var(--amber)",
+        "강원": "var(--pink)",
+        "경남": "var(--pink)"
+      };
+
+      STUDENTS.forEach(s => {
+        if (currentMapMode === "metro" && s.regionGroup === "경남") return;
+        const [rawX, rawY] = proj(s.lat, s.lng);
+        const off = currentMapMode === "metro" && METRO_OFFSETS[s.id] ? METRO_OFFSETS[s.id] : { dx: 0, dy: 0 };
+        const x = rawX + off.dx;
+        const y = rawY + off.dy;
+        const isSel = s.id === selectedId;
+
+        const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        g.style.cursor = "pointer";
+
+        if (isSel) {
+          const pulse = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+          pulse.setAttribute("cx", x); pulse.setAttribute("cy", y);
+          pulse.setAttribute("r", "12");
+          pulse.setAttribute("fill", "var(--coral)");
+          pulse.classList.add("pulse-circle");
+          g.appendChild(pulse);
+        }
+
+        const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        dot.setAttribute("cx", x); dot.setAttribute("cy", y);
+        dot.setAttribute("r", isSel ? "10" : "7.5");
+        dot.setAttribute("fill", isSel ? "var(--coral)" : regionColor[s.regionGroup]);
+        dot.setAttribute("stroke", "var(--surface)");
+        dot.setAttribute("stroke-width", "2");
+
+        const lbl = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        lbl.setAttribute("x", x);
+        lbl.setAttribute("y", y + (off.dy < 0 ? -12 : 18));
+        lbl.setAttribute("text-anchor", "middle");
+        lbl.setAttribute("fill", "var(--text)");
+        lbl.setAttribute("font-size", isSel ? "12.5" : "11");
+        lbl.setAttribute("font-weight", isSel ? "800" : "600");
+        lbl.textContent = currentMapMode === "korea" && s.regionGroup === "의정부" && s.id !== "park_jy"
+          ? "" : s.name;
+        if (currentMapMode === "korea" && s.id === "park_jy") {
+          lbl.textContent = "의정부(4) · 수도권(13)";
+          lbl.setAttribute("x", x - 45);
+        }
+
+        g.appendChild(dot);
+        g.appendChild(lbl);
+        g.addEventListener("click", () => selectStudent(s.id));
+        svg.appendChild(g);
+      });
+
+      // Metro inset badge if 박정빈 hidden
+      if (currentMapMode === "metro") {
+        const note = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        note.style.cursor = "pointer";
+        const box = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        box.setAttribute("x", W - 210); box.setAttribute("y", H - 64);
+        box.setAttribute("width", "196"); box.setAttribute("height", "50");
+        box.setAttribute("rx", "10");
+        box.setAttribute("fill", "var(--surface)");
+        box.setAttribute("stroke", "var(--pink)");
+        const t1 = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        t1.setAttribute("x", W - 198); t1.setAttribute("y", H - 42);
+        t1.setAttribute("fill", "var(--pink)");
+        t1.setAttribute("font-size", "11");
+        t1.setAttribute("font-weight", "700");
+        t1.textContent = "🌊 경남 거제시 (1명): 박정빈";
+        const t2 = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        t2.setAttribute("x", W - 198); t2.setAttribute("y", H - 24);
+        t2.setAttribute("fill", "var(--text-muted)");
+        t2.setAttribute("font-size", "10.5");
+        t2.textContent = "클릭하여 프로필 보기 / 전국뷰 전환";
+        note.appendChild(box); note.appendChild(t1); note.appendChild(t2);
+        note.addEventListener("click", () => selectStudent("park_jb"));
+        svg.appendChild(note);
+      }
+    }
+
+    document.querySelectorAll("#mapModeFilters .filter-pill").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#mapModeFilters .filter-pill").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentMapMode = btn.dataset.mapmode;
+        renderMap();
+      });
+    });
+
+    // ==========================================
+    // 7. ANALYTICS & ROSTER DIRECTORY
+    // ==========================================
+    function renderBarChart(containerId, items, total) {
+      const el = document.getElementById(containerId);
+      el.innerHTML = items.map(it => {
+        const pct = Math.round((it.count / total) * 100);
+        return `
+          <div class="bar-row">
+            <div class="bar-label" title="${it.label}">${it.label}</div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width: ${pct}%; background: ${it.color};"></div>
+            </div>
+            <div class="bar-count">${it.count}명</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderAnalytics() {
+      renderBarChart("regionChart", [
+        { label: "경기 동·북부", count: 5, color: "var(--amber)" },
+        { label: "경기도 의정부", count: 4, color: "var(--accent)" },
+        { label: "서울특별시", count: 4, color: "var(--emerald)" },
+        { label: "강원 춘천시", count: 1, color: "var(--pink)" },
+        { label: "경남 거제시", count: 1, color: "var(--coral)" }
+      ], 15);
+
+      const hobbyCounts = {};
+      STUDENTS.forEach(s => s.hobbyTags.forEach(t => {
+        hobbyCounts[t] = (hobbyCounts[t] || 0) + 1;
+      }));
+      const hobbyColors = {
+        "음악/감상": "var(--accent)",
+        "음악/악기": "var(--coral)",
+        "게임/애니": "var(--pink)",
+        "팬덤/수집": "var(--cyan)",
+        "창작/독서": "var(--emerald)",
+        "영화/영상": "var(--amber)",
+        "운동/힐링": "#8b5cf6"
+      };
+      const hobbyItems = Object.entries(hobbyCounts)
+        .sort((a, b) => b[1] - a[1])
+        .map(([label, count]) => ({ label, count, color: hobbyColors[label] || "var(--accent)" }));
+      renderBarChart("hobbyChart", hobbyItems, 10);
+
+      renderBarChart("treasureChart", [
+        { label: "가족·엄마·동생", count: 7, color: "var(--emerald)" },
+        { label: "나 자신 (자기애)", count: 4, color: "var(--accent)" },
+        { label: "동기 직접 지목", count: 2, color: "var(--coral)" },
+        { label: "반려·건강", count: 2, color: "var(--amber)" }
+      ], 15);
+    }
+
+    let rosterFilter = "all";
+    let searchQuery = "";
+
+    function renderRoster() {
+      const grid = document.getElementById("rosterGrid");
+      if (!grid) return;
+
+      const filtered = STUDENTS.filter(s => {
+        if (rosterFilter === "의정부" && s.regionGroup !== "의정부") return false;
+        if (rosterFilter === "서울" && s.regionGroup !== "서울") return false;
+        if (rosterFilter === "경기기타" && s.regionGroup !== "경기기타") return false;
+        if (rosterFilter === "음악" && !s.hobbyTags.some(t => t.startsWith("음악"))) return false;
+        if (rosterFilter === "개성" && !s.specialGender) return false;
+
+        if (searchQuery) {
+          const hay = `${s.name} ${s.address} ${s.hobbies.join(" ")} ${s.treasure} ${s.gender}`.toLowerCase();
+          if (!hay.includes(searchQuery.toLowerCase())) return false;
+        }
+        return true;
+      });
+
+      grid.innerHTML = filtered.map(s => `
+        <div class="student-card ${s.id === selectedId ? "selected" : ""}" onclick="jumpToNetwork('${s.id}')">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <div class="avatar-circle" style="width:38px; height:38px; border-radius:11px; font-size:15px; background:${s.color};">${s.name[0]}</div>
+              <div>
+                <div style="font-weight:800; font-size:16px;">${s.name}</div>
+                <div style="font-size:11px; color:var(--text-muted);">${s.address}</div>
+              </div>
+            </div>
+            <span class="gender-badge ${s.specialGender ? "special" : ""}">${s.gender}</span>
+          </div>
+          <div class="tag-list">
+            ${s.hobbies.map(h => `<span class="tag">${h}</span>`).join("")}
+          </div>
+          <div style="font-size:12px; color:var(--text-muted); border-top:1px dashed var(--border); padding-top:8px;">
+            💎 <strong style="color:var(--text);">${escapeHtml(s.treasure)}</strong>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function jumpToNetwork(id) {
+      selectStudent(id);
+      document.querySelector('.tab-btn[data-tab="network"]').click();
+    }
+
+    document.querySelectorAll("#rosterFilters .filter-pill").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#rosterFilters .filter-pill").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        rosterFilter = btn.dataset.filter;
+        renderRoster();
+      });
+    });
+
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      searchQuery = e.target.value.trim();
+      renderRoster();
+    });
+
+    // ==========================================
+    // 8. INIT
+    // ==========================================
+    window.addEventListener("resize", () => {
+      updateNetworkSize();
+      renderMap();
+    });
+
+    initNetworkSvg();
+    renderInspector();
+    renderMap();
+  </script>
+</body>
+</html>
